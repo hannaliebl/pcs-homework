@@ -8,7 +8,9 @@ function makeDeque (values) {
         pop: pop,
         unshift: unshift,
         shift: shift,
-        cut: cut
+        cut: cut,
+        sort: sort,
+        map: map
     };
     function printArray() {
         console.log(array);
@@ -50,9 +52,23 @@ function makeDeque (values) {
             return newFirstHalfNormOffset.concat(newSecondHalfNormOffset);
         }
     }
+    function sort(sortFn) {
+        return array.sort(sortFn);
+    }
+    function map(convertFn) {
+        return array.map(convertFn);
+    }
     return myDeque;
 }
 
 deque1 = makeDeque([1,2,3,4]);
 
 deque2 = makeDeque([1,2,3,4,5,6]);
+
+//prove part b works, you can add a number to the deque (don't have card object integrated)
+deque2.map(function(currentValue, index, arr) {
+    var addedNum = 1;
+    if (index === arr.length - 1) {
+        arr.push(addedNum);
+    }
+});
